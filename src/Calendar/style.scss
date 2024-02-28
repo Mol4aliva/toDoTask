@@ -1,0 +1,58 @@
+.name-calendar {
+  text-align: center;
+  font-size: 40px;
+}
+.react-calendar {
+  width: 1000px;
+  max-height: 660px;
+  overflow-y: auto;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+  border: 10px solid #76a79f;
+  background: #e6f7f4;
+
+  &__month-view__days__day {
+    height: 80px;
+    line-height: 50px;
+  }
+
+  &__month-view {
+    text-align: center;
+  }
+  &__tile--hasActive {
+    background: #e6f7f4;
+  }
+  &__tile--active {
+    background-color: #76A79F !important;
+    color: white;
+  }
+
+  &__tile--now {
+    background: #375B54;
+    color: white;
+  }
+  &__tile:hover {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+  }
+
+  &__tile--now:hover {
+    background: #375B54 !important;
+  }
+
+    &__navigation {
+      background-color: #76A79F !important;
+      color: #375B54 !important;
+      height: 65px !important;
+      font-weight: bold !important;
+
+      &__label:hover,
+      &__arrow:hover {
+        background-color: transparent !important;
+      }
+
+    }
+  &__navigation button:enabled:focus {
+    background-color: transparent;
+  }
+
+}

@@ -13,6 +13,7 @@ import {BsPersonFill} from 'react-icons/bs';
 import {AiOutlineContacts} from 'react-icons/ai';
 import './style.scss';
 import iconProfil from './icon-profil.png';
+import Body from "../Body";
 
 function LeftNavbar() {
 
@@ -104,11 +105,7 @@ function LeftNavbar() {
                     </Nav>
                 </Col>
                 <Col sm={9}>
-                    <main className="content-wrapper">
-                        <Container>
-                            <h1>Main Content</h1>
-                        </Container>
-                    </main>
+                   <Body/>
                 </Col>
             </Row>
         </Container>
