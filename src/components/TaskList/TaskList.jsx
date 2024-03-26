@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Button, Dropdown } from 'react-bootstrap';
+import TaskCalendar from "../TaskCalendar/TaskCalendar";
 
 const TaskList = () => {
-    const [category, setCategory] = useState('FAMILY'); // Изначально выбрана категория FAMILY
-    const [newTask, setNewTask] = useState(''); // Состояние для новой задачи
+    const [category, setCategory] = useState('FAMILY');
+    const [newTask, setNewTask] = useState('');
     const [tasks, setTasks] = useState({
         FAMILY: ["Task 1", "Task 2"],
         WORK: ["Task 3", "Task 4"],
@@ -24,12 +25,13 @@ const TaskList = () => {
                 ...prevTasks,
                 [category]: [...prevTasks[category], newTask]
             }));
-            setNewTask(''); // Сбросить поле для ввода новой задачи после добавления
+            setNewTask('');
         }
     };
 
     return (
         <div className="container mt-5">
+            <TaskCalendar/>
             <Form>
                 <Dropdown>
                     <Dropdown.Toggle variant="primary" id="dropdown-basic">

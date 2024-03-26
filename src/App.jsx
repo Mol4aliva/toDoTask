@@ -2,12 +2,12 @@ import './App.scss';
 import { Routes, Route } from "react-router-dom";
 import LeftNavbar from "./components/LeftNavbar";
 import Navbar from "./components/Navbar";
-import MyCalendar from "./components/Calendar";
+import Footer from "./components/Footer";
+import Contact from "./components/Contact";
+import About from "./components/About";
+import TaskList from "./components/TaskList";
 import Home from "./components/Home";
-import FamilyTasks from "./pages/FamilyTasks";
 import ShoppingTasks from "./pages/ShoppingTasks";
-import NotFound from "./pages/NotFound";
-
 
 function App() {
     return (
@@ -15,13 +15,14 @@ function App() {
                 <Navbar/>
                 <LeftNavbar/>
                 <Routes>
-                    <Route path="/" element={<Home/>}>
-                    <Route path="calendar" element={<MyCalendar/>}/>
-                    <Route path="family" element={<FamilyTasks/>}/>
-                    <Route path="shopping" element={<ShoppingTasks/>}/>
-                    <Route path="*" element={<NotFound/>}/>
-                    </Route>
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/task-list" element={<TaskList />} />
+
+                    <Route path="/shopping-tasks" element={<ShoppingTasks />} />
                 </Routes>
+                <Footer/>
         </>
     );
 }

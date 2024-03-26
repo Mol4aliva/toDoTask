@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Home from "../Home";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -7,7 +6,6 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from "@mui/material/Container";
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -16,9 +14,12 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import { Inbox as InboxIcon, Mail as MailIcon, Help as HelpIcon, Info as InfoIcon, ContactMail as ContactMailIcon } from '@mui/icons-material';
+import EditIcon from '@mui/icons-material/Edit';
+import WorkIcon from '@mui/icons-material/Work';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { styled, useTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
 import darkTheme from "../../themes/darkTheme";
@@ -66,10 +67,27 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
 }));
+const menuItems = [
+    { text: 'Tasks', icon: <InboxIcon /> },
+    { text: 'Family', icon: <MailIcon /> },
+    { text: 'Shopping', icon: <InfoIcon /> },
+    { text: 'Work', icon:  <WorkIcon /> },
+];
+
+const otherItems = [
+    { text: 'New List', icon: <AddIcon /> },
+    { text: 'Edit List', icon: <EditIcon /> },
+    { text: 'Deleted Items', icon: <DeleteIcon /> },
+];
+
+const contactItems = [
+    { text: 'Help', icon: <HelpIcon /> },
+    { text: 'About', icon: <InboxIcon /> },
+    { text: 'Contact', icon: <ContactMailIcon /> },
+];
 
 export default function LeftNavbar() {
     const theme = useTheme();
@@ -99,9 +117,7 @@ export default function LeftNavbar() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div" >
-                        Persistent drawer
-                    </Typography>
+
                 </Toolbar>
                 </Container>
             </AppBar>
@@ -125,26 +141,39 @@ export default function LeftNavbar() {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
+                    {menuItems.map((item) => (
+                        <ListItem key={item.text} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                    {item.icon}
                                 </ListItemIcon>
-                                <ListItemText primary={text} />
+                                <ListItemText primary={item.text} />
                             </ListItemButton>
                         </ListItem>
                     ))}
                 </List>
                 <Divider />
                 <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
+                    {otherItems.map((item) => (
+                        <ListItem key={item.text} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                    {item.icon}
                                 </ListItemIcon>
-                                <ListItemText primary={text} />
+                                <ListItemText primary={item.text} />
+                            </ListItemButton>
+                        </ListItem>
+                    ))}
+                </List>
+                <Divider />
+                <List>
+                    {contactItems.map((item) => (
+                        <ListItem key={item.text} disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    {item.icon}
+                                </ListItemIcon>
+                                <ListItemText primary={item.text} />
                             </ListItemButton>
                         </ListItem>
                     ))}
@@ -154,7 +183,7 @@ export default function LeftNavbar() {
             <Main open={open}>
                 <DrawerHeader />
                 <Container maxWidth="xl" sx={{ paddingLeft: 4, paddingRight: 4 }}>
-                <Home/>
+
                 </Container>
             </Main>
         </Box>
