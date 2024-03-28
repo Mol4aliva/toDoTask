@@ -19,7 +19,7 @@ import darkTheme from "../../themes/darkTheme";
 const pages = ['Home', 'Task List', 'About', 'Contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function Navbar() {
+function Navbar({ handleDrawerOpen, isDrawerOpen }) {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -41,9 +41,22 @@ function Navbar() {
 
     return (
         <ThemeProvider theme={darkTheme}>
-        <AppBar position="static">
+        <AppBar position="static" sx={{ zIndex: 2 }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
+
+                    {!isDrawerOpen && (
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            edge="start"
+                            onClick={handleDrawerOpen}
+                            sx={{ marginRight: 2, display: { md: 'flex', xs: 'none' } }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    )}
+
                     <Typography
                         variant="h6"
                         noWrap
