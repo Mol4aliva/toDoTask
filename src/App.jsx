@@ -8,6 +8,9 @@ import TaskList from "./components/TaskList";
 import Home from "./components/Home";
 import ShoppingTasks from "./pages/ShoppingTasks";
 import { useState } from "react";
+import FamilyTasks from "./pages/FamilyTasks";
+import WorkTask from "./pages/WorkTask";
+import Help from "./components/Help";
 
 function App() {
     const [open, setOpen] = useState(false);
@@ -29,8 +32,10 @@ function App() {
                 <Route path="/contact" element={<Contact/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/task-list" element={<TaskList/>}/>
-
-                <Route path="/shopping-tasks" element={<ShoppingTasks/>}/>
+                <Route path="/family-task" element={<FamilyTasks/>}/>
+                <Route path="/shopping-task" element={<ShoppingTasks/>}/>
+                <Route path="/work-task" element={<WorkTask/>}/>
+                <Route path="/help" element={<Help/>}/>
             </Routes>
 
             <Footer/>

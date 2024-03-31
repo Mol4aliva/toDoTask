@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -14,12 +15,13 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { ThemeProvider } from '@mui/material/styles';
 import darkTheme from "../../themes/darkTheme";
+import useStyles from './NavbarStyles';
 
-
-const pages = ['Home', 'Task List', 'About', 'Contact'];
+const pages = ['Home', 'Task', 'About', 'Contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar({ handleDrawerOpen, isDrawerOpen }) {
+    const classes = useStyles();
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -51,9 +53,9 @@ function Navbar({ handleDrawerOpen, isDrawerOpen }) {
                             aria-label="open drawer"
                             edge="start"
                             onClick={handleDrawerOpen}
-                            sx={{ marginRight: 2, display: { md: 'flex', xs: 'none' } }}
+                            className={classes.menuButton}
                         >
-                            <MenuIcon />
+                            <ChevronRightIcon />
                         </IconButton>
                     )}
 
@@ -104,11 +106,19 @@ function Navbar({ handleDrawerOpen, isDrawerOpen }) {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
+
                             {pages.map((page) => (
+                                <Link
+                                    key={page}
+                                    to={`/${page.toLowerCase().replace(' ', '-')}`}
+                                    style={{ textDecoration: 'none', color: 'white' }}
+                                >
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
+                                </Link>
                             ))}
+
                         </Menu>
                     </Box>
                     <Typography

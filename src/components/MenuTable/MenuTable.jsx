@@ -19,7 +19,7 @@ const MenuTable = ({ tasks, addTask, deleteTask }) => {
 
     return (
         <>
-            <Box sx={{ width: '100%', px: [2, 4, 6, 8] }}>
+            <Box sx={{ width: '80%', px: [2, 4, 6, 8], ml: 6  }}>
                 <Paper sx={{ width: '100%', mb: 2 }}>
                     <Box
                         sx={{

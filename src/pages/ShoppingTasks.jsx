@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MenuTable from "../components/MenuTable";
-
+import Box from "@mui/material/Box";
 const ShoppingTasks = () => {
     const [tasks, setTasks] = useState([]);
 
@@ -15,7 +15,9 @@ const ShoppingTasks = () => {
     };
 
     return (
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <MenuTable tasks={tasks} addTask={addTask} deleteTask={deleteTask} />
+        </Box>
     );
 };
 

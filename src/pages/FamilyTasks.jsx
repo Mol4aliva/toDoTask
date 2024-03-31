@@ -1,10 +1,10 @@
-import React from 'react';
+import Box from "@mui/material/Box";
 
 const FamilyTasks = () => {
     return (
-        <div>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             FamilyTasks
-        </div>
+        </Box>
     );
 };
 

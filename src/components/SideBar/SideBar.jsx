@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -90,10 +91,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 const menuItems = [
-    { text: 'Tasks', icon: <InboxIcon /> },
-    { text: 'Family', icon: <MailIcon /> },
-    { text: 'Shopping', icon: <InfoIcon /> },
-    { text: 'Work', icon:  <WorkIcon /> },
+    { text: 'Tasks', icon: <InboxIcon />, path: '/task-list' },
+    { text: 'Family', icon: <MailIcon />, path: '/family-task' },
+    { text: 'Shopping', icon: <InfoIcon />, path: '/shopping-task' },
+    { text: 'Work', icon:  <WorkIcon />, path: '/work-task' },
 ];
 
 const otherItems = [
@@ -103,10 +104,11 @@ const otherItems = [
 ];
 
 const contactItems = [
-    { text: 'Help', icon: <HelpIcon /> },
-    { text: 'About', icon: <InboxIcon /> },
-    { text: 'Contact', icon: <ContactMailIcon /> },
+    { text: 'Help', icon: <HelpIcon />, path: '/help' },
+    { text: 'About', icon: <InboxIcon />, path: '/about' },
+    { text: 'Contact', icon: <ContactMailIcon />, path: '/contact' },
 ];
+
 
 export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isDrawerOpen }) {
     const theme = useTheme();
@@ -130,7 +132,7 @@ export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isD
                 <List>
                     {menuItems.map((item) => (
                         <ListItem key={item.text} disablePadding>
-                            <ListItemButton>
+                            <ListItemButton  component={Link} to={item.path}>
                                 <ListItemIcon>
                                     {item.icon}
                                 </ListItemIcon>
@@ -143,7 +145,7 @@ export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isD
                 <List>
                     {otherItems.map((item) => (
                         <ListItem key={item.text} disablePadding>
-                            <ListItemButton>
+                            <ListItemButton  component={Link} to={item.path}>
                                 <ListItemIcon>
                                     {item.icon}
                                 </ListItemIcon>
@@ -156,7 +158,7 @@ export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isD
                 <List>
                     {contactItems.map((item) => (
                         <ListItem key={item.text} disablePadding>
-                            <ListItemButton>
+                            <ListItemButton  component={Link} to={item.path}>
                                 <ListItemIcon>
                                     {item.icon}
                                 </ListItemIcon>
