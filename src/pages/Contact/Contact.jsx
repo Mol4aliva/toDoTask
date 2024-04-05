@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
 import contactStyles from './ContactStyles';
-import MailIcon from "@mui/icons-material/Mail";
-import PhoneIcon from '@mui/icons-material/Phone';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { contactIcons } from "../../assets/icons";
 
 const Contact = () => {
 
@@ -118,7 +112,7 @@ const Contact = () => {
                         <Button
                             type="submit"
                             variant="contained"
-                            endIcon={<SendIcon />}
+                            endIcon={<contactIcons.SendIcon />}
                             sx={contactStyles.button}
                         >
                             Send
@@ -176,21 +170,21 @@ const Contact = () => {
                     Info
                 </Typography>
                     <Typography variant="h6" align="left" gutterBottom style={{ paddingTop: '30px' }}>
-                        <MailIcon /> info@todotask.we
+                        <contactIcons.MailIcon /> info@todotask.we
                     </Typography>
                     <Typography variant="h6" align="left" gutterBottom style={{ paddingTop: '30px' }}>
-                        <PhoneIcon /> +372 55 55 555
+                        <contactIcons.PhoneIcon /> +372 55 55 555
                     </Typography>
                     <Typography variant="h6" align="left" gutterBottom style={{ paddingTop: '30px' }}>
-                        <LocationOnIcon /> Estonia,Tallinn
+                        <contactIcons.LocationOnIcon /> Estonia,Tallinn
                     </Typography>
                 </Box>
                 )}
 
                 <Box sx={{ display: 'flex', justifyContent: 'center', position: 'absolute', bottom: '10%', left: '55%', transform: 'translateX(-50%)' }}>
-                    <FacebookIcon sx={{ marginRight: '20px' }} />
-                    <InstagramIcon sx={{ marginRight: '20px' }} />
-                    <WhatsAppIcon />
+                    <contactIcons.FacebookIcon sx={{ marginRight: '20px' }} />
+                    <contactIcons.InstagramIcon sx={{ marginRight: '20px' }} />
+                    <contactIcons.WhatsAppIcon />
                 </Box>
             </Box>
         </Box>

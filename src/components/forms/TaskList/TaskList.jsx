@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import DeleteIcon from '@mui/icons-material/Delete';
 import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
@@ -15,6 +12,7 @@ import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import { format } from 'date-fns';
 import dayjs from 'dayjs';
+import {taskListIcons} from "../../../assets/icons";
 
 const TaskList = () => {
     const [selectedDate, setSelectedDate] = useState(dayjs());
@@ -128,14 +126,14 @@ const TaskList = () => {
                                                 onChange={(event) => handleDescriptionChange(day, hourIndex, taskIndex, event)}
                                                 placeholder="Task description"
                                             />
-                                            <IconButton onClick={() => handleDeleteTask(day, hourIndex, taskIndex)}>
-                                                <DeleteIcon />
-                                            </IconButton>
+                                            <taskListIcons.IconButton onClick={() => handleDeleteTask(day, hourIndex, taskIndex)}>
+                                                <taskListIcons.DeleteIcon />
+                                            </taskListIcons.IconButton>
                                         </div>
                                     ))}
-                                    <IconButton onClick={() => handleAddTask(day, hourIndex)}>
-                                        <AddCircleOutlineIcon />
-                                    </IconButton>
+                                    <taskListIcons.IconButton onClick={() => handleAddTask(day, hourIndex)}>
+                                        <taskListIcons.AddCircleOutlineIcon />
+                                    </taskListIcons.IconButton>
                                 </TableCell>
                             ))}
                         </TableRow>

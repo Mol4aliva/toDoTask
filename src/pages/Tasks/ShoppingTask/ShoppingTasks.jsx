@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MenuTable from "../components/MenuTable";
+import MenuTable from "../../../components/forms/MenuTable/MenuTable";
 import Box from "@mui/material/Box";
 const ShoppingTasks = () => {
     const [tasks, setTasks] = useState([]);

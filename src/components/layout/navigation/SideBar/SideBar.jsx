@@ -14,16 +14,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import Navbar from "../Navbar";
-import {ContactMail as ContactMailIcon, Help as HelpIcon, Info as InfoIcon} from "@mui/icons-material";
-import WorkIcon from "@mui/icons-material/Work";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import {ThemeProvider} from "@mui/material/styles";
-import darkTheme from "../../themes/darkTheme";
+import darkTheme from "../../../../assets/themes/darkTheme";
+import { menuItemsIcons, otherItemsIcons, contactItemsIcons} from "../../../../assets/icons"; // Импорт иконок из файла icons.js
 
 const drawerWidth = 240;
 
@@ -90,25 +84,25 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         }),
     }),
 );
+
 const menuItems = [
-    { text: 'Tasks', icon: <InboxIcon />, path: '/task-list' },
-    { text: 'Family', icon: <MailIcon />, path: '/family-task' },
-    { text: 'Shopping', icon: <InfoIcon />, path: '/shopping-task' },
-    { text: 'Work', icon:  <WorkIcon />, path: '/work-task' },
+    { text: 'Tasks', icon: <menuItemsIcons.InboxIcon />, path: '/all-task' },
+    { text: 'Family', icon: <menuItemsIcons.MailIcon />, path: '/family-task' },
+    { text: 'Shopping', icon: <menuItemsIcons.InfoIcon />, path: '/shopping-task' },
+    { text: 'Work', icon:  <menuItemsIcons.WorkIcon />, path: '/work-task' },
 ];
 
 const otherItems = [
-    { text: 'New List', icon: <AddIcon /> },
-    { text: 'Edit List', icon: <EditIcon /> },
-    { text: 'Deleted Items', icon: <DeleteIcon /> },
+    { text: 'New List', icon: <otherItemsIcons.AddIcon /> },
+    { text: 'Edit List', icon: <otherItemsIcons.EditIcon /> },
+    { text: 'Deleted Items', icon: <otherItemsIcons.DeleteIcon /> },
 ];
 
 const contactItems = [
-    { text: 'Help', icon: <HelpIcon />, path: '/help' },
-    { text: 'About', icon: <InboxIcon />, path: '/about' },
-    { text: 'Contact', icon: <ContactMailIcon />, path: '/contact' },
+    { text: 'Help', icon: <contactItemsIcons.HelpIcon />, path: '/help' },
+    { text: 'About', icon: <contactItemsIcons.InboxIcon />, path: '/about' },
+    { text: 'Contact', icon: <contactItemsIcons.ContactMailIcon />, path: '/contact' },
 ];
-
 
 export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isDrawerOpen }) {
     const theme = useTheme();
@@ -117,57 +111,57 @@ export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isD
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <ThemeProvider theme={darkTheme}>
-            <AppBar position="fixed" open={open}>
+                <AppBar position="fixed" open={open}>
 
                     <Navbar handleDrawerOpen={handleDrawerOpen} isDrawerOpen={isDrawerOpen}/>
 
-            </AppBar>
-            <Drawer variant="permanent" open={open}>
-                <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                    </IconButton>
-                </DrawerHeader>
-                <Divider />
-                <List>
-                    {menuItems.map((item) => (
-                        <ListItem key={item.text} disablePadding>
-                            <ListItemButton  component={Link} to={item.path}>
-                                <ListItemIcon>
-                                    {item.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={item.text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-                <Divider />
-                <List>
-                    {otherItems.map((item) => (
-                        <ListItem key={item.text} disablePadding>
-                            <ListItemButton  component={Link} to={item.path}>
-                                <ListItemIcon>
-                                    {item.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={item.text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-                <Divider />
-                <List>
-                    {contactItems.map((item) => (
-                        <ListItem key={item.text} disablePadding>
-                            <ListItemButton  component={Link} to={item.path}>
-                                <ListItemIcon>
-                                    {item.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={item.text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-            </Drawer>
+                </AppBar>
+                <Drawer variant="permanent" open={open}>
+                    <DrawerHeader>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                        </IconButton>
+                    </DrawerHeader>
+                    <Divider />
+                    <List>
+                        {menuItems.map((item) => (
+                            <ListItem key={item.text} disablePadding>
+                                <ListItemButton  component={Link} to={item.path}>
+                                    <ListItemIcon>
+                                        {item.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={item.text} />
+                                </ListItemButton>
+                            </ListItem>
+                        ))}
+                    </List>
+                    <Divider />
+                    <List>
+                        {otherItems.map((item) => (
+                            <ListItem key={item.text} disablePadding>
+                                <ListItemButton  component={Link} to={item.path}>
+                                    <ListItemIcon>
+                                        {item.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={item.text} />
+                                </ListItemButton>
+                            </ListItem>
+                        ))}
+                    </List>
+                    <Divider />
+                    <List>
+                        {contactItems.map((item) => (
+                            <ListItem key={item.text} disablePadding>
+                                <ListItemButton  component={Link} to={item.path}>
+                                    <ListItemIcon>
+                                        {item.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={item.text} />
+                                </ListItemButton>
+                            </ListItem>
+                        ))}
+                    </List>
+                </Drawer>
             </ThemeProvider>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />

@@ -14,7 +14,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { ThemeProvider } from '@mui/material/styles';
-import darkTheme from "../../themes/darkTheme";
+import darkTheme from "../../../../assets/themes/darkTheme";
 import useStyles from './NavbarStyles';
 
 const pages = ['Home', 'Task', 'About', 'Contact'];

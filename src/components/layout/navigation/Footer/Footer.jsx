@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import darkTheme from "../../themes/darkTheme";
+import darkTheme from "../../../../assets/themes/darkTheme";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
