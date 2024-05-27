@@ -1,13 +1,20 @@
 import React from 'react';
-import Calendar from "../../../components/forms/Calendar/Calendar";
 import CardTask from "../../../components/cards/CardTask/CardTask";
+import Box from "@mui/material/Box";
 
 const AllTask = () => {
     return (
-        <>
-           <Calendar/>
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: '#f1f6f6',
+                height: '90vh'
+            }}
+        >
            <CardTask/>
-        </>
+        </Box>
     );
 };
 

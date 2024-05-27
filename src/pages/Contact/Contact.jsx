@@ -47,13 +47,20 @@ const Contact = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#f1f6f6',
+            height: '90vh'
+        }}>
             <Box
                 sx={{
                     p: 3,
                     width: 400,
                     maxWidth: '100%',
                     marginRight: '400px',
+
                     '@media (max-width: 1030px)': {
                         marginRight: '0',
                         padding: '40px 0 0 50px'

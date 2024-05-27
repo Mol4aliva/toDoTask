@@ -1,18 +1,17 @@
 import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import darkTheme from "../../../../assets/themes/darkTheme";
+
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
-        <ThemeProvider theme={darkTheme}>
+
             <Box
                 position="fixed"
                 bottom={0}
                 width="100%"
-                bgcolor="background.paper"
+                bgcolor="#15b1a4"
                 color="text.primary"
                 p={2}
                 boxShadow={4}
@@ -23,7 +22,6 @@ const Footer = () => {
             >
                 <Typography variant="body2">© {currentYear} ToDoTask</Typography>
             </Box>
-        </ThemeProvider>
     );
 };
 

@@ -13,12 +13,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { ThemeProvider } from '@mui/material/styles';
-import darkTheme from "../../../../assets/themes/darkTheme";
 import useStyles from './NavbarStyles';
 
-const pages = ['Home', 'Task', 'About', 'Contact'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Home', 'Tasks', 'Account', 'Contact'];
+const settings = ['Profile', 'Account', 'Logout'];
 
 function Navbar({ handleDrawerOpen, isDrawerOpen }) {
     const classes = useStyles();
@@ -42,8 +40,8 @@ function Navbar({ handleDrawerOpen, isDrawerOpen }) {
     };
 
     return (
-        <ThemeProvider theme={darkTheme}>
-        <AppBar position="static" sx={{ zIndex: 2 }}>
+
+        <AppBar position="static" sx={{ zIndex: 2, backgroundColor: '#15b1a4' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
 
@@ -62,7 +60,7 @@ function Navbar({ handleDrawerOpen, isDrawerOpen }) {
                     <Typography
                         variant="h6"
                         noWrap
-                        component="a"
+                        component={Link}
                         href="#menu"
                         sx={{
                             mr: 2,
@@ -159,7 +157,7 @@ function Navbar({ handleDrawerOpen, isDrawerOpen }) {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="#" />
+                                <Avatar alt="Master" src="#" />
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -179,16 +177,21 @@ function Navbar({ handleDrawerOpen, isDrawerOpen }) {
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
+                                <Link
+                                    key={setting}
+                                    to={`/${setting.toLowerCase()}`}
+                                    style={{ textDecoration: 'none', color: 'inherit' }}
+                                >
+                                    <MenuItem onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center">{setting}</Typography>
+                                    </MenuItem>
+                                </Link>
                             ))}
                         </Menu>
                     </Box>
                 </Toolbar>
             </Container>
         </AppBar>
-        </ThemeProvider>
     );
 }
 export default Navbar;

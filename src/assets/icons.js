@@ -28,7 +28,8 @@ export const menuItemsIcons = {
 export const contactItemsIcons = {
     ContactMailIcon,
     HelpIcon,
-    InboxIcon
+    InboxIcon,
+    InfoIcon
 };
 
 export const contactIcons = {
@@ -46,3 +47,9 @@ export const taskListIcons = {
     IconButton,
     AddCircleOutlineIcon
 };
+
+export const profileIcons = {
+    MailIcon,
+    PhoneIcon,
+    LocationOnIcon
+}

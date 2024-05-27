@@ -15,8 +15,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Navbar from "../Navbar";
-import {ThemeProvider} from "@mui/material/styles";
-import darkTheme from "../../../../assets/themes/darkTheme";
 import { menuItemsIcons, otherItemsIcons, contactItemsIcons} from "../../../../assets/icons"; // Импорт иконок из файла icons.js
 
 const drawerWidth = 240;
@@ -86,22 +84,23 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const menuItems = [
-    { text: 'Tasks', icon: <menuItemsIcons.InboxIcon />, path: '/all-task' },
-    { text: 'Family', icon: <menuItemsIcons.MailIcon />, path: '/family-task' },
-    { text: 'Shopping', icon: <menuItemsIcons.InfoIcon />, path: '/shopping-task' },
-    { text: 'Work', icon:  <menuItemsIcons.WorkIcon />, path: '/work-task' },
+    { text: 'Tasks', icon: <menuItemsIcons.InboxIcon />, path: '/tasks', color: '#FF5733' },
+    { text: 'Family', icon: <menuItemsIcons.MailIcon />, path: '/family-task', color: '#33FF57' },
+    { text: 'Shopping', icon: <menuItemsIcons.InfoIcon />, path: '/shopping-task', color: '#3357FF' },
+    { text: 'Work', icon: <menuItemsIcons.WorkIcon />, path: '/work-task', color: '#33b2ff' },
 ];
 
 const otherItems = [
-    { text: 'New List', icon: <otherItemsIcons.AddIcon /> },
-    { text: 'Edit List', icon: <otherItemsIcons.EditIcon /> },
-    { text: 'Deleted Items', icon: <otherItemsIcons.DeleteIcon /> },
+    { text: 'New List', icon: <otherItemsIcons.AddIcon />, color: '#31772b' },
+    { text: 'Edit List', icon: <otherItemsIcons.EditIcon />, color: '#FF5733' },
+    { text: 'Deleted Items', icon: <otherItemsIcons.DeleteIcon />, color: '#C70039' },
 ];
 
 const contactItems = [
-    { text: 'Help', icon: <contactItemsIcons.HelpIcon />, path: '/help' },
-    { text: 'About', icon: <contactItemsIcons.InboxIcon />, path: '/about' },
-    { text: 'Contact', icon: <contactItemsIcons.ContactMailIcon />, path: '/contact' },
+    { text: 'Help', icon: <contactItemsIcons.HelpIcon />, path: '/help', color: '#900C3F' },
+    { text: 'Account', icon: <contactItemsIcons.InboxIcon />, path: '/account', color: '#186706' },
+    { text: 'Contact', icon: <contactItemsIcons.ContactMailIcon />, path: '/contact', color: '#FFC300' },
+    { text: 'Home', icon: <contactItemsIcons.InfoIcon />, path: '/home', color: '#FF5733' },
 ];
 
 export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isDrawerOpen }) {
@@ -109,8 +108,8 @@ export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isD
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <ThemeProvider theme={darkTheme}>
+            <CssBaseline/>
+
                 <AppBar position="fixed" open={open}>
 
                     <Navbar handleDrawerOpen={handleDrawerOpen} isDrawerOpen={isDrawerOpen}/>
@@ -122,12 +121,12 @@ export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isD
                             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                         </IconButton>
                     </DrawerHeader>
-                    <Divider />
+                    <Divider sx={{ backgroundColor: '#15b1a4',  }}/>
                     <List>
                         {menuItems.map((item) => (
                             <ListItem key={item.text} disablePadding>
                                 <ListItemButton  component={Link} to={item.path}>
-                                    <ListItemIcon>
+                                    <ListItemIcon  sx={{ color: item.color }}>
                                         {item.icon}
                                     </ListItemIcon>
                                     <ListItemText primary={item.text} />
@@ -135,12 +134,12 @@ export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isD
                             </ListItem>
                         ))}
                     </List>
-                    <Divider />
+                    <Divider sx={{ backgroundColor: '#15b1a4' }}/>
                     <List>
                         {otherItems.map((item) => (
                             <ListItem key={item.text} disablePadding>
                                 <ListItemButton  component={Link} to={item.path}>
-                                    <ListItemIcon>
+                                    <ListItemIcon  sx={{ color: item.color }}>
                                         {item.icon}
                                     </ListItemIcon>
                                     <ListItemText primary={item.text} />
@@ -148,12 +147,12 @@ export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isD
                             </ListItem>
                         ))}
                     </List>
-                    <Divider />
+                    <Divider sx={{ backgroundColor: '#15b1a4' }}/>
                     <List>
                         {contactItems.map((item) => (
                             <ListItem key={item.text} disablePadding>
                                 <ListItemButton  component={Link} to={item.path}>
-                                    <ListItemIcon>
+                                    <ListItemIcon  sx={{ color: item.color }}>
                                         {item.icon}
                                     </ListItemIcon>
                                     <ListItemText primary={item.text} />
@@ -162,12 +161,10 @@ export default function SideBar({ open, handleDrawerOpen, handleDrawerClose, isD
                         ))}
                     </List>
                 </Drawer>
-            </ThemeProvider>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+
                 <DrawerHeader />
 
-
             </Box>
-        </Box>
+
     );
 }
